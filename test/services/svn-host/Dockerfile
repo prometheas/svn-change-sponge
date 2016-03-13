@@ -9,8 +9,4 @@ RUN \
 	cat /usr/local/svn-forcer/apache2/svn-repo.conf >> /usr/local/apache2/conf/extra/httpd-svn.conf
 
 # prepare svn repository
-RUN \
-	mkdir /var/svn && \
-	/usr/local/subversion/bin/svnadmin create /var/svn/repository && \
-	chown -R www-data:www-data /var/svn/repository && \
-	chmod -R g+rw /var/svn/repository
+RUN init_repo.sh
