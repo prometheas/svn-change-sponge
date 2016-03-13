@@ -1,0 +1,22 @@
+{
+  "name": "svn-change-sponge",
+  "version": "0.0.1",
+  "description": "A utility that pushes all changes to a Subversion working copy to its repository",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "docker-compose -f spec/services/docker-compose.yml up test",
+    "develop": "docker-compose -f spec/services/docker-compose.yml up develop"
+  },
+  "author": "John Lianoglou",
+  "license": "MIT",
+  "dependencies": {
+    "svn-spawn": "^0.1.5",
+    "xml2js": "^0.4.16"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "gulp": "^3.8.11",
+    "gulp-mocha": "^2.0.0",
+    "mocha": "^2.2.1"
+  }
+}
