@@ -4,8 +4,8 @@
   "description": "A utility that pushes all changes to a Subversion working copy to its repository",
   "main": "lib/main.js",
   "scripts": {
-    "test": "docker-compose -f spec/services/docker-compose.yml up test",
-    "develop": "docker-compose -f spec/services/docker-compose.yml up develop"
+    "test": "docker-compose -f test/services/docker-compose.yml up test",
+    "develop": "docker-compose -f test/services/docker-compose.yml up develop"
   },
   "author": "John Lianoglou",
   "license": "MIT",
