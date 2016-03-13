@@ -1,5 +1,5 @@
 {
-  "name": "svn-change-sponge",
+  "name": "svn-forcer",
   "version": "0.0.1",
   "description": "A utility that pushes all changes to a Subversion working copy to its repository",
   "main": "lib/main.js",
