@@ -1,6 +1,13 @@
 ---
   globals:
+
+    before: false
+    beforeEach: false
+    after: false
+    afterEach: false
+
     describe: false
     it: false
+
   rules:
     func-names: off
