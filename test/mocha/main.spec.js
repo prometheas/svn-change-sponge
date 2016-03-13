@@ -3,14 +3,34 @@
 var chai = require('chai');
 var expect = chai.expect;
 
-// Uncoment the next line to use the "should" API
-// var should = chai.should();
-// see http://chaijs.com/guide/styles/#should
+var util = require('util');
+var shell = require('shelljs');
 
-var pusher = require('../../lib/main.js');
+var sponge = require('../../lib/main.js');
 
-describe('SvnChangeSponge module', function () {
-  it('should not be a function', function () {
-    expect(pusher).to.be.a('function');
+describe('SvnChangeSponge', function () {
+
+  var testPath = '/tmp/testing';
+  var repoUrl = 'http://svn/';
+
+  before(function () {
+    shell.exec(util.format('mkdir -p "%s"; cd "%s"; rm -rf *', testPath, testPath));
+    shell.exec('svn co http://svn/');
+  });
+
+  describe('the module', function () {
+    it('should be an object', function () {
+      expect(sponge).to.be.a('object');
+    });
+
+    it('should have a function called #absorbChanges', function () {
+      expect(sponge.absorbChanges).to.be.a('function');
+    });
+  });
+
+  describe('ability to validate Subversion wc directory', function () {
+    it('should throw an error when pointed at a non-Subversion wc directory', function () {
+
+    });
   });
 });

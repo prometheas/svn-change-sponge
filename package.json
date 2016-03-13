@@ -2,6 +2,7 @@
   "name": "svn-forcer",
   "version": "0.0.1",
   "description": "A utility that pushes all changes to a Subversion working copy to its repository",
+  "repository": "https://github.com/prometheas/svn-forcer.git",
   "main": "lib/main.js",
   "scripts": {
     "test": "docker-compose -f test/services/docker-compose.yml up test",
@@ -19,7 +20,8 @@
     "eslint-config-airbnb": "^6.1.0",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "shelljs": "^0.6.0"
   },
   "eslintConfig": {
     "extends": "airbnb/legacy",
