@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /var/project
-npm run-script test
+cd $PROJECT_DIR
+./node_modules/.bin/mocha "spec/**/*.spec.js"

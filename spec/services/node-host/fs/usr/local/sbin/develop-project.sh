@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /var/project
-npm run-script develop
+cd $PROJECT_DIR
+gulp
