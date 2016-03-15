@@ -168,6 +168,20 @@ describe('SvnPusher', function () {
       expect(sponge.hasModifiedFiles(context.dir)).to.be.true;
     });
 
+    it('should be able to identify modified files', function () {
+      var context = createTestContext();
+
+      shell.touch('foo-modified.txt');
+      svnAddAndCommit('committing file for identify modified file test');
+      expect(sponge.getModifiedFiles(context.dir)).to.be.empty;
+
+      execSilent('echo "new content" >> foo-modified.txt');
+      expect(sponge.getModifiedFiles(context.dir)).not.to.be.empty;
+
+      var modifiedFile = sponge.getModifiedFiles(context.dir)[0]._attribute.path;
+      expect(path.basename(modifiedFile)).to.equal('foo-modified.txt');
+    });
+
     it('should be able to detect a dirty directory', function () {
       var context = createTestContext();
       var filePath = path.join(context.dir, 'foo.txt');
