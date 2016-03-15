@@ -7,7 +7,6 @@ var dircompare = require('dir-compare');
 var _ = require('lodash');
 var path = require('path');
 var shell = require('shelljs');
-var svn = require('svn-interface');
 var temp = require('temp').track();
 var util = require('util');
 
@@ -30,6 +29,15 @@ function getSvnUrl(svnPath) {
 }
 
 /**
+ * Executes a command in the shell and suppresses output to stdout.
+ *
+ * @param {string} command
+ */
+function execSilent(command) {
+  shell.exec(command, { silent: true });
+}
+
+/**
  * Answers whether the identified wc directory matches the HEAD revision
  * in the Subversion repository.
  *
@@ -46,15 +54,6 @@ function doesWcMatchRepoHead(context) {
   });
 
   return results.differences === 0;
-}
-
-/**
- * Executes a command in the shell and suppresses output to stdout.
- *
- * @param {string} command
- */
-function execSilent(command) {
-  shell.exec(command, { silent: true });
 }
 
 function svnAddAndCommit(msg) {

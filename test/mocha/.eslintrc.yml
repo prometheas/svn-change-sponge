@@ -11,5 +11,6 @@
 
   rules:
     func-names: off
+    no-throw-literal: off
     no-unused-expressions: off
     vars-on-top: off
