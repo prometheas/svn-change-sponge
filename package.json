@@ -1,8 +1,8 @@
 {
-  "name": "svn-forcer",
+  "name": "svn-status-sync",
   "version": "0.0.1",
   "description": "A utility that pushes all changes to a Subversion working copy to its repository",
-  "repository": "https://github.com/prometheas/svn-forcer.git",
+  "repository": "https://github.com/prometheas/svn-status-sync.git",
   "main": "lib/main.js",
   "scripts": {
     "dc": "docker-compose -f test/services/docker-compose.yml",
