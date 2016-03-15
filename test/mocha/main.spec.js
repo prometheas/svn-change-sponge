@@ -122,13 +122,8 @@ describe('SvnPusher', function () {
       expect(sponge.getNewFiles(context.dir)).not.to.be.empty;
       expect(sponge.getNewFiles(context.dir)).to.have.length(1);
 
-      shell.touch('bar-add.txt');
-      expect(sponge.getNewFiles(context.dir)).to.have.length(2);
-
-      var addedFiles = _.map(sponge.getNewFiles(context.dir), function (item) {
-        return path.basename(item._attribute.path);
-      });
-      expect(addedFiles).to.contain('foo-add.txt', 'bar-add.txt');
+      var addedFile = sponge.getNewFiles(context.dir)[0]._attribute.path;
+      expect(path.basename(addedFile)).to.equal('foo-add.txt');
 
       svnAddAndCommit('committing file for identify new files test');
       expect(sponge.getNewFiles(context.dir)).to.be.empty;
@@ -150,7 +145,6 @@ describe('SvnPusher', function () {
       var context = createTestContext();
 
       shell.touch('foo.txt');
-      shell.touch('bar.txt');
       svnAddAndCommit('committing file for identify new files test');
       expect(sponge.getMissingFiles(context.dir)).to.be.empty;
 
@@ -158,13 +152,8 @@ describe('SvnPusher', function () {
       expect(sponge.getMissingFiles(context.dir)).not.to.be.empty;
       expect(sponge.getMissingFiles(context.dir)).to.have.length(1);
 
-      shell.rm('bar.txt');
-      expect(sponge.getMissingFiles(context.dir)).to.have.length(2);
-
-      var missingFiles = _.map(sponge.getMissingFiles(context.dir), function (item) {
-        return path.basename(item._attribute.path);
-      });
-      expect(missingFiles).to.contain('foo.txt', 'bar.txt');
+      var missingFile = sponge.getMissingFiles(context.dir)[0]._attribute.path;
+      expect(path.basename(missingFile)).to.equal('foo.txt');
     });
 
     it('should be able to detect modified files', function () {
