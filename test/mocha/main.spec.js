@@ -158,13 +158,12 @@ describe('SvnPusher', function () {
 
     it('should be able to detect modified files', function () {
       var context = createTestContext();
-      var filePath = path.join(context.dir, 'foo.txt');
 
-      shell.touch(filePath);
+      shell.touch('modified.txt');
       svnAddAndCommit('committing file for modification detection test');
       expect(sponge.hasModifiedFiles(context.dir)).to.be.false;
 
-      execSilent('echo "stuff" >> ' + filePath);
+      execSilent('echo "stuff" >> modified.txt');
       expect(sponge.hasModifiedFiles(context.dir)).to.be.true;
     });
 
