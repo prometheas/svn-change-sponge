@@ -12,3 +12,4 @@
   rules:
     func-names: off
     no-unused-expressions: off
+    vars-on-top: off
