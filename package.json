@@ -7,6 +7,9 @@
   "scripts": {
     "dc": "docker-compose -f test/services/docker-compose.yml",
     "develop": "docker-compose -f test/services/docker-compose.yml up develop",
+    "rebuild-develop": "docker build -t services_develop test/services/node-host",
+    "rebuild-svn": "docker build -t services_svn test/services/svn-host",
+    "rebuild-test": "docker build -t services_test test/services/node-host",
     "test": "docker-compose -f test/services/docker-compose.yml up test"
   },
   "author": "John Lianoglou",
