@@ -141,6 +141,22 @@ describe('SvnPusher', function () {
       expect(sponge.hasMissingFiles(context.dir)).to.be.true;
     });
 
+    it('should be able to identify missing files', function () {
+      var context = createTestContext();
+
+      shell.touch('foo.txt');
+      shell.touch('bar.txt');
+      svnAddAndCommit('committing file for identify new files test');
+      expect(sponge.getMissingFiles(context.dir)).to.be.empty;
+
+      shell.rm('foo.txt');
+      expect(sponge.getMissingFiles(context.dir)).not.to.be.empty;
+      expect(sponge.getMissingFiles(context.dir)).to.have.length(1);
+
+      shell.rm('bar.txt');
+      expect(sponge.getMissingFiles(context.dir)).to.have.length(2);
+    });
+
     it('should be able to detect modified files', function () {
       var context = createTestContext();
       var filePath = path.join(context.dir, 'foo.txt');
