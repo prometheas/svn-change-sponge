@@ -134,7 +134,7 @@ describe('SvnPusher', function () {
       var filePath = path.join(context.dir, 'foo.txt');
 
       shell.touch(filePath);
-      execSilent('svn add *; svn ci -m "committing file for delete detection test"');
+      svnAddAndCommit('committing file for delete detection test');
       expect(sponge.hasMissingFiles(context.dir)).to.be.false;
 
       shell.rm(filePath);
@@ -162,7 +162,7 @@ describe('SvnPusher', function () {
       var filePath = path.join(context.dir, 'foo.txt');
 
       shell.touch(filePath);
-      execSilent('svn add *; svn ci -m "committing file for modification detection test"');
+      svnAddAndCommit('committing file for modification detection test');
       expect(sponge.hasModifiedFiles(context.dir)).to.be.false;
 
       execSilent('echo "stuff" >> ' + filePath);
@@ -177,7 +177,7 @@ describe('SvnPusher', function () {
       shell.touch(filePath);
       expect(sponge.isWcDirty(context.dir)).to.be.true;
 
-      execSilent('svn add *; svn ci -m "committing file for dirty wc test"');
+      svnAddAndCommit('committing file for dirty wc test');
       expect(sponge.isWcDirty(context.dir)).to.be.false;
     });
   });
