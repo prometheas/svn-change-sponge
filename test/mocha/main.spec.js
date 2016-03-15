@@ -35,12 +35,12 @@ function getSvnUrl(svnPath) {
  *
  * @return {boolean}
  */
-function doesWcMatchRepoHead(wcPath) {
+function doesWcMatchRepoHead(context) {
   var results;
-  var repoTemp = path.join(temp.mkdirSync('repo-state-'), 'wc');
-  svn.checkout(getSvnUrl('/'), repoTemp);
+  var headWcPath = temp.mkdirSync('repo-state-');
 
-  results = dircompare.compareSync(wcPath, repoTemp, {
+  execSilent(util.format('svn co "%s" "%s"', context.svnUrl, headWcPath));
+  results = dircompare.compareSync(context.dir, headWcPath, {
     compareContent: true,
     excludeFilter: '.svn'
   });
@@ -194,15 +194,67 @@ describe('SvnPusher', function () {
     });
   });
 
-  describe.skip('ability to push basic changes to repo', function () {
-    it('should be able to detect, add, and commit a new file', function () {
+  describe('ability to push basic changes to repo', function () {
+    it('should be able to add unknown files to the repo', function () {
       var context = createTestContext();
 
-      shell.touch(path.join(context.dir, 'foo.txt'));
-      expect(doesWcMatchRepoHead(context.dir)).to.be.false;
+      shell.touch(['1', '2']);
+      expect(doesWcMatchRepoHead(context)).to.be.false;
 
-      sponge.pushChanges();
-      expect(doesWcMatchRepoHead(context.dir)).to.be.true;
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+    });
+
+    it('should be able to commit modified files to the repo', function () {
+      var context = createTestContext();
+
+      shell.touch(['1', '2', '3']);
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+
+      execSilent('echo "changes" >> "1"');
+      expect(doesWcMatchRepoHead(context)).to.be.false;
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+    });
+
+    it('should be able to delete missing files from the repo', function () {
+      var context = createTestContext();
+
+      shell.touch(['1', '2', '3']);
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+      shell.rm('2');
+      expect(doesWcMatchRepoHead(context)).to.be.false;
+
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+    });
+
+    it('should be able to add new directories to the repository', function () {
+      var context = createTestContext();
+
+      shell.mkdir('hello');
+      shell.touch('hello/file');
+      expect(doesWcMatchRepoHead(context)).to.be.false;
+
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+    });
+
+    it('should be able to delete missing directories from the repository', function () {
+      var context = createTestContext();
+
+      shell.mkdir('hello');
+      shell.touch('hello/file');
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
+
+      shell.rm('-rf', 'hello');
+      expect(doesWcMatchRepoHead(context)).to.be.false;
+
+      sponge.pushChanges(context.dir, 'pushing changes');
+      expect(doesWcMatchRepoHead(context)).to.be.true;
     });
   });
 });
