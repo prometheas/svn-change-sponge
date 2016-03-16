@@ -221,7 +221,7 @@ describe('SvnPusher', function () {
       expect(sponge.getFilesByStatus(context.dir, 'deleted')).to.have.length(1);
     });
 
-    it('should be able to `svn add` new directories and their contents to the repository', function () {
+    it('should `svn add` new directories and contents to the repository', function () {
       var context = createTestContext();
 
       shell.mkdir('hello');
@@ -234,7 +234,7 @@ describe('SvnPusher', function () {
       expect(sponge.getFilesByStatus(context.dir, 'added')).to.have.length(2);
     });
 
-    it('should be able to `svn delete` missing directories and their contents from the repository', function () {
+    it('should `svn delete` missing directories and contents from the repository', function () {
       var context = createTestContext();
 
       shell.mkdir('hello');
