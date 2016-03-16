@@ -16,3 +16,22 @@ Which is to say that even if this _is_ the module you're looking for, you're alm
 It literally just saves you the trouble of doing all the adds and deletes.
 
 So if you haven't already picked a full-featured Subversion module out, I could recommend having a look at packages such as [svn-interface](https://www.npmjs.com/package/svn-interface) or [svn-spawn](https://www.npmjs.com/package/svn-spawn) (in fact, this project uses the former for its `svn status`, `svn add`, and `svn delete` functionality).
+
+
+## Usage
+
+Usage of this module is quite simple:
+
+```javascript
+var wcAttendant = require('svn-wc-attendant');
+var workingDir = '/path/to/wc';
+
+// checkout files from Subversion repo into `workingDir`
+// modify some files in aforementioned wc dir
+
+wcAttendant.prepareWcForCommitting(workingDir);
+
+// commit all changes back to repo
+```
+
+In the preceding code sample, `wcAttendant.prepareWcForCommitting()` is called to `svn add` any unversioned files and `svn delete` any files that were deleted.  From there, running `svn commit` on that wc directory will commit all those adds and deletes to the repo.
