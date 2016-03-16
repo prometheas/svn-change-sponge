@@ -219,6 +219,10 @@ describe('SvnPusher', function () {
       sponge.prepareWcForCommitting(context.dir);
       expect(sponge.getMissingFiles(context.dir)).to.be.empty;
       expect(sponge.getFilesByStatus(context.dir, 'deleted')).to.have.length(1);
+
+      expect(doesWcMatchRepoHead(context)).to.be.false;
+      execSilent(util.format('svn commit "%s" -m "adding files"', context.dir));
+      expect(doesWcMatchRepoHead(context)).to.be.true;
     });
 
     it('should `svn add` new directories and contents to the repository', function () {
