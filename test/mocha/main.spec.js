@@ -121,7 +121,7 @@ describe('SvnPusher', function () {
       expect(sponge.getUnversionedFiles(context.dir)).not.to.be.empty;
       expect(sponge.getUnversionedFiles(context.dir)).to.have.length(1);
 
-      var addedFile = sponge.getUnversionedFiles(context.dir)[0]._attribute.path;
+      var addedFile = sponge.getUnversionedFiles(context.dir)[0].absPath;
       expect(path.basename(addedFile)).to.equal('foo-add.txt');
 
       svnAddAndCommit('committing file for identify new files test');
@@ -151,7 +151,7 @@ describe('SvnPusher', function () {
       expect(sponge.getMissingFiles(context.dir)).not.to.be.empty;
       expect(sponge.getMissingFiles(context.dir)).to.have.length(1);
 
-      var missingFile = sponge.getMissingFiles(context.dir)[0]._attribute.path;
+      var missingFile = sponge.getMissingFiles(context.dir)[0].absPath;
       expect(path.basename(missingFile)).to.equal('foo.txt');
     });
 
@@ -176,7 +176,7 @@ describe('SvnPusher', function () {
       execSilent('echo "new content" >> foo-modified.txt');
       expect(sponge.getModifiedFiles(context.dir)).not.to.be.empty;
 
-      var modifiedFile = sponge.getModifiedFiles(context.dir)[0]._attribute.path;
+      var modifiedFile = sponge.getModifiedFiles(context.dir)[0].absPath;
       expect(path.basename(modifiedFile)).to.equal('foo-modified.txt');
     });
 
