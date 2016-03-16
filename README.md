@@ -2,7 +2,7 @@
 
 Deals with your dirty Subversion WC so you don't have to.
 
-<img src="https://travis-ci.org/prometheas/svn-wc-attendant.svg">
+<a href="https://travis-ci.org/prometheas/svn-wc-attendant"><img src="https://travis-ci.org/prometheas/svn-wc-attendant.svg"></a>
 
 
 ## Introduction
