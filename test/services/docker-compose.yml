@@ -1,29 +1,26 @@
-version: '2'
+svn:
+  build: ./svn-host
+  ports:
+    - "80:80"
 
-services:
-  svn:
-    build: ./svn-host
-    ports:
-      - "80:80"
+test:
+  build: ./node-host
+  command:
+    - "/usr/local/sbin/test-project.sh"
+  environment:
+    - PROJECT_DIR=/var/project
+  links:
+    - svn
+  volumes:
+    - ../..:/var/project
 
-  test:
-    build: ./node-host
-    command:
-      - "/usr/local/sbin/test-project.sh"
-    environment:
-      - PROJECT_DIR=/var/project
-    links:
-      - svn
-    volumes:
-      - ../..:/var/project
-
-  develop:
-    build: ./node-host
-    command:
-      - "/usr/local/sbin/develop-project.sh"
-    environment:
-      - PROJECT_DIR=/var/project
-    links:
-      - svn
-    volumes:
-      - ../..:/var/project
+develop:
+  build: ./node-host
+  command:
+    - "/usr/local/sbin/develop-project.sh"
+  environment:
+    - PROJECT_DIR=/var/project
+  links:
+    - svn
+  volumes:
+    - ../..:/var/project
