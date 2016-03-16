@@ -1,4 +1,4 @@
-# svn-status-sync
+# svn-wc-attendant
 
 A utility that pushes all changes to a Subversion working copy up to its repository.
 
