@@ -105,27 +105,27 @@ describe('SvnPusher', function () {
       var context = createTestContext();
       var filePath = path.join(context.dir, 'foo.txt');
 
-      expect(sponge.hasNewFiles(context.dir)).to.be.false;
+      expect(sponge.hasUnversionedFiles(context.dir)).to.be.false;
       shell.touch(filePath);
-      expect(sponge.hasNewFiles(context.dir)).to.be.true;
+      expect(sponge.hasUnversionedFiles(context.dir)).to.be.true;
       shell.rm(filePath);
-      expect(sponge.hasNewFiles(context.dir)).to.be.false;
+      expect(sponge.hasUnversionedFiles(context.dir)).to.be.false;
     });
 
     it('should be able to identify new files', function () {
       var context = createTestContext();
 
-      expect(sponge.getNewFiles(context.dir)).to.be.empty;
+      expect(sponge.getUnversionedFiles(context.dir)).to.be.empty;
 
       shell.touch('foo-add.txt');
-      expect(sponge.getNewFiles(context.dir)).not.to.be.empty;
-      expect(sponge.getNewFiles(context.dir)).to.have.length(1);
+      expect(sponge.getUnversionedFiles(context.dir)).not.to.be.empty;
+      expect(sponge.getUnversionedFiles(context.dir)).to.have.length(1);
 
-      var addedFile = sponge.getNewFiles(context.dir)[0]._attribute.path;
+      var addedFile = sponge.getUnversionedFiles(context.dir)[0]._attribute.path;
       expect(path.basename(addedFile)).to.equal('foo-add.txt');
 
       svnAddAndCommit('committing file for identify new files test');
-      expect(sponge.getNewFiles(context.dir)).to.be.empty;
+      expect(sponge.getUnversionedFiles(context.dir)).to.be.empty;
     });
 
     it('should be able to detect missing files', function () {
@@ -199,10 +199,10 @@ describe('SvnPusher', function () {
       var files = (['1', '2']);
 
       shell.touch(files);
-      expect(sponge.getNewFiles(context.dir)).to.have.length(files.length);
+      expect(sponge.getUnversionedFiles(context.dir)).to.have.length(files.length);
 
       sponge.prepareWcForCommitting(context.dir);
-      expect(sponge.getNewFiles(context.dir)).to.be.empty;
+      expect(sponge.getUnversionedFiles(context.dir)).to.be.empty;
       expect(sponge.getFilesByStatus(context.dir, 'added')).to.have.length(files.length);
     });
 
@@ -227,10 +227,10 @@ describe('SvnPusher', function () {
       shell.mkdir('hello');
       shell.touch('hello/file');
 
-      expect(sponge.getNewFiles(context.dir)).to.have.length(1);
+      expect(sponge.getUnversionedFiles(context.dir)).to.have.length(1);
 
       sponge.prepareWcForCommitting(context.dir);
-      expect(sponge.getNewFiles(context.dir)).to.be.empty;
+      expect(sponge.getUnversionedFiles(context.dir)).to.be.empty;
       expect(sponge.getFilesByStatus(context.dir, 'added')).to.have.length(2);
     });
 
