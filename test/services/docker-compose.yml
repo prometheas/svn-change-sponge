@@ -1,5 +1,5 @@
 svn:
-  build: ./svn-host
+  image: prometheas/svn-host-testing-container
   ports:
     - "80:80"
 
