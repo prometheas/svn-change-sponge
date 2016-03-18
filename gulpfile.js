@@ -20,9 +20,9 @@ gulp.task('test', function runTests() {
 
 gulp.task('watch-test', function watchFiles() {
   gulp.watch([
-    'test/**/*.spec.js',
     'lib/*.js',
-    'lib/**/*.js'
+    'lib/**/*.js',
+    'test/**/*.spec.js'
   ], ['test']);
 });
 
