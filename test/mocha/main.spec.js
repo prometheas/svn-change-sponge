@@ -92,6 +92,8 @@ function createTestContext() {
 }
 
 describe('SvnPusher', function () {
+  this.slow(5000);
+
   describe('the module', function () {
     it('should be an object', function () {
       expect(sponge).to.be.a('object');
