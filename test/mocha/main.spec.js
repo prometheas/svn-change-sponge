@@ -56,6 +56,12 @@ function doesWcMatchRepoHead(context) {
   return results.differences === 0;
 }
 
+/**
+ * Utility function to simply `svn add` all unknown files and commit to the
+ * repo, in order to simply test readability.
+ *
+ * @param {string} msg  commit message
+ */
 function svnAddAndCommit(msg) {
   execSilent(util.format('svn add *; svn ci -m "%s"', _.toString(msg).replace(/"/, '\\"')));
 }
