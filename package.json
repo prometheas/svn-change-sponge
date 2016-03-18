@@ -6,10 +6,10 @@
   "main": "lib/main.js",
   "scripts": {
     "dc": "docker-compose -f test/services/docker-compose.yml",
-    "develop": "docker-compose -f test/services/docker-compose.yml up develop",
+    "develop": "docker-compose -f test/services/docker-compose.yml run develop",
     "rebuild-develop": "docker build -t services_develop test/services/node-host",
     "rebuild-test": "docker build -t services_test test/services/node-host",
-    "test": "docker-compose -f test/services/docker-compose.yml up test"
+    "test": "docker-compose -f test/services/docker-compose.yml run test"
   },
   "author": "John Lianoglou",
   "license": "MIT",
