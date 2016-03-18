@@ -1,29 +1,31 @@
 /* eslint no-console: 0 */
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 
-// Error.stackTraceLimit = 2;
+function getProjectGlob(relPath) {
+  return path.resolve(__dirname, relPath);
+}
 
 gulp.task('test', function runTests() {
   gulp
-    .src('test/**/*.spec.js', {
-      read: false
+    .src(getProjectGlob('test/**/*.spec.js'), {
+      read: true
     })
     .pipe(mocha())
     .on('error', function reportError(e) {
       console.warn(e.message);
-      this.emit('end');
     });
 });
 
-gulp.task('watch-test', function watchFiles() {
-  gulp.watch([
-    'test/**/*.spec.js',
-    'lib/*.js',
-    'lib/**/*.js'
+gulp.task('watch', function watchFiles() {
+  return gulp.watch([
+    getProjectGlob('lib/*.js'),
+    getProjectGlob('lib/**/*.js'),
+    getProjectGlob('test/**/*.spec.js')
   ], ['test']);
 });
 
-gulp.task('default', ['test', 'watch-test']);
+gulp.task('default', ['test', 'watch']);
