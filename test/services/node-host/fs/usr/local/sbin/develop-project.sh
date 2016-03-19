@@ -1,5 +1,4 @@
 #!/bin/bash
 
-cd $PROJECT_DIR
-npm install
+source /usr/local/lib/node-host/pre-project-script.sh
 gulp
