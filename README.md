@@ -3,6 +3,11 @@
 Deals with your dirty Subversion WC so you don't have to.
 
 [![Travis CI badge](https://travis-ci.org/prometheas/svn-wc-attendant.svg)](https://travis-ci.org/prometheas/svn-wc-attendant)
+<br />
+[![bitHound Overall Score](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/score.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant)
+[![bitHound Dependencies](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/dependencies.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant/master/dependencies/npm)
+[![bitHound Dev Dependencies](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/devDependencies.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant/master/dependencies/npm)
+[![bitHound Code](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/code.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant)
 
 
 ## Introduction
