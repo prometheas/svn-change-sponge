@@ -8,6 +8,7 @@
     "clean": "rm -rf node_modules",
     "dc": "docker-compose -f test/services/docker-compose.yml",
     "develop": "docker-compose -f test/services/docker-compose.yml run develop",
+    "lint": "eslint .",
     "rebuild-develop": "docker build -t services_develop test/services/node-host",
     "rebuild-test": "docker build -t services_test test/services/node-host",
     "rebuild-all": "./node_modules/.bin/parallelshell 'npm run rebuild-develop' 'npm run rebuild-test'",
@@ -19,25 +20,19 @@
   "dependencies": {
     "deasync": "^0.1.4",
     "lodash": "^4.6.1",
-    "shelljs": "^0.6.0",
+    "shelljs": "^0.7.7",
     "svn-interface": "^0.5.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "dir-compare": "^1.0.1",
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "6.1.0",
-    "mocha": "^2.4.5",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "mocha": "^3.3.0",
     "parallelshell": "^2.0.0",
     "temp": "^0.8.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "eslintConfig": {
-    "extends": "airbnb/legacy",
-    "env": {
-      "node": true
-    }
   }
 }
