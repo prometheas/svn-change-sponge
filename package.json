@@ -8,6 +8,7 @@
     "clean": "rm -rf node_modules",
     "dc": "docker-compose -f test/services/docker-compose.yml",
     "develop": "docker-compose -f test/services/docker-compose.yml run develop",
+    "lint": "eslint .",
     "rebuild-develop": "docker build -t services_develop test/services/node-host",
     "rebuild-test": "docker build -t services_test test/services/node-host",
     "rebuild-all": "./node_modules/.bin/parallelshell 'npm run rebuild-develop' 'npm run rebuild-test'",
