@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## v0.1.1
+
+### Fixed
+
+- Fixed mismatch between version in pakcage.json and that declared in this file.
+
 ## v0.1.0
 
 ### Added
