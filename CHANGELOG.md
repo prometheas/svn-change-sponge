@@ -15,6 +15,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 - Pinned version of Aribnb ESLint configs
+- Test configs now rely on native mocha configuration mechanisms
+
+### Removed
+
+- Removed Gulp dependency
 
 ## v0.0.2
 
