@@ -1,0 +1,7 @@
+--glob **.spec.js
+--recursive
+--no-timeouts
+
+--watch
+
+lib test/mocha

@@ -27,8 +27,6 @@
     "dir-compare": "^1.0.1",
     "eslint": "^2.4.0",
     "eslint-config-airbnb": "6.1.0",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
     "mocha": "^2.4.5",
     "parallelshell": "^2.0.0",
     "temp": "^0.8.3"
