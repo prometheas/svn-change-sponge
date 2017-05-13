@@ -1,6 +1,6 @@
 {
   "name": "svn-wc-attendant",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deals with your dirty Subversion WC so you don't have to.",
   "repository": "https://github.com/prometheas/svn-wc-attendant.git",
   "main": "lib/main.js",
