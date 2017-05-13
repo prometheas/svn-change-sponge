@@ -34,11 +34,5 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "eslintConfig": {
-    "extends": "airbnb/legacy",
-    "env": {
-      "node": true
-    }
   }
 }
