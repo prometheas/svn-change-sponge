@@ -21,7 +21,7 @@ var repoHost = 'svn';
  * @return {string}
  */
 function getSvnUrl(svnPath) {
-  if (! svnPath.match(/^\//)) {
+  if (!svnPath.match(/^\//)) {
     throw 'svnPath param must start with "/"';
   }
 
