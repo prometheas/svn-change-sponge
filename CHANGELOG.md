@@ -5,16 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [Unreleased]
+## v0.1.0
 
 ### Added
 
-- Introduced `clean` and `reinstall` npm tesks
+- Introduced `clean`, `reinstall`, and `lint` npm tesks
 - This changelog file
 
 ### Changed
 
-- Pinned version of Aribnb ESLint configs
+- Updated ESLint and Aribnb rules
 - Test configs now rely on native mocha configuration mechanisms
 - Updated `shelljs` dependency to 0.7.7 to appease bithound
 
