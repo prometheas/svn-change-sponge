@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Pinned version of Aribnb ESLint configs
 - Test configs now rely on native mocha configuration mechanisms
+- Updated `shelljs` dependency to 0.7.7 to appease bithound
 
 ### Removed
 
