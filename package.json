@@ -26,8 +26,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "dir-compare": "^1.0.1",
-    "eslint": "^2.4.0",
-    "eslint-config-airbnb": "6.1.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
     "mocha": "^3.3.0",
     "parallelshell": "^2.0.0",
     "temp": "^0.8.3"
