@@ -1,0 +1,5 @@
+--glob **.spec.js
+--recursive
+--no-timeouts
+
+test/mocha

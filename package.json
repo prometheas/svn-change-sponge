@@ -5,11 +5,13 @@
   "repository": "https://github.com/prometheas/svn-wc-attendant.git",
   "main": "lib/main.js",
   "scripts": {
+    "clean": "rm -rf node_modules",
     "dc": "docker-compose -f test/services/docker-compose.yml",
     "develop": "docker-compose -f test/services/docker-compose.yml run develop",
     "rebuild-develop": "docker build -t services_develop test/services/node-host",
     "rebuild-test": "docker build -t services_test test/services/node-host",
     "rebuild-all": "./node_modules/.bin/parallelshell 'npm run rebuild-develop' 'npm run rebuild-test'",
+    "reinstall": "npm run clean; npm install",
     "test": "docker-compose -f test/services/docker-compose.yml run test"
   },
   "author": "John Lianoglou",
@@ -24,9 +26,7 @@
     "chai": "^3.5.0",
     "dir-compare": "^1.0.1",
     "eslint": "^2.4.0",
-    "eslint-config-airbnb": "^6.1.0",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
+    "eslint-config-airbnb": "6.1.0",
     "mocha": "^2.4.5",
     "parallelshell": "^2.0.0",
     "temp": "^0.8.3"
