@@ -8,6 +8,8 @@ Deals with your dirty Subversion WC so you don't have to.
 [![bitHound Dependencies](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/dependencies.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/devDependencies.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/prometheas/svn-wc-attendant/badges/code.svg)](https://www.bithound.io/github/prometheas/svn-wc-attendant)
+<br />
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/prometheas/svn-wc-attendant.svg?columns=all)](https://waffle.io/prometheas/svn-wc-attendant)
 
 
 ## Introduction
